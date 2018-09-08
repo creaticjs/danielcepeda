@@ -1,0 +1,64 @@
+#titulo_pagina
+{
+    text-align: center;
+}
+#body
+{
+    background-image: url("/img/fondo.jpg"); 
+}
+
+#palabra
+{
+    position: absolute;
+    margin-left: 300px;
+    margin-top: 20px;
+    border: 1px;
+    width: 400px;
+    height: 100px;
+    z-index: 1;
+}
+#tabla
+{
+    position: absolute;
+    margin-left: 200px;
+    margin-top: 150px;
+    padding: 50px;
+    width: 350px;
+    height: 100px;
+    z-index: 2;
+}
+
+#divBtnInicio
+{
+    position: absolute;
+    margin-left: 1100px;
+    margin-top: 20px;
+    width: 150px;
+    height: 50px;
+    z-index: 3;
+}
+
+#divImagen
+{
+    position: absolute;
+    margin-left: 900px;
+    margin-top: 100px;
+    width: 350px;
+    height: 350px;
+    z-index: 4;
+}
+
+
+.botonLetra
+{
+    border-radius: 200px;
+    font-family:Verdana,Helvetica;
+    width: 35px;
+    height: 35px;
+    font-weight: bold;
+}
+.cajatexto
+{
+    width: 35px;
+    height: 35px;
+}
