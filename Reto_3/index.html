@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <title>Reto 3 Star Wars</title>
+</head>
+
+<body style="background: url(fondo.png)">
+    <div class="container">
+        <div class="row">
+            <div style="background: white" class="col-md-6">
+                <div style="background: black">
+                    <img src="starwarslogoIZQ.png" width="150px" height="100px" alt="">
+                </div>
+                <ul class="nav justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" onclick="getStarWarsPeople()" href="#">People</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" onclick="getStarWarsPlanets()" href="#">Planets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" onclick="getStarWarsFilms()" href="#">Films</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" onclick="getStarWarsSpecies()" href="#">Species</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" onclick="getStarWarsVehicles()" href="#">Vehicles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="getStarWarsStarships()" href="#">Starships</a>
+                    </li>
+                </ul>
+                <div id="cardItem">
+                    
+                 </div>
+            </div>
+            <div style="background: white" class="col-md-6">
+                <div style="background: black">
+                    <img src="starwarslogoDER.jpg" width="150px" height="100px" alt="">
+                </div>
+                <ul class="nav justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" onclick="" href="">Peoples</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" onclick="" href="">Planets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" onclick="" href="">Films</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" onclick="" href="">Species</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" onclick="" href="">Vehicles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="" href="">Starships</a>
+                    </li>
+                </ul>
+                <!--
+                <div>
+                    <pre id="repositorios">
+                                    <h4 style="text-align: center">Repositorios en Github</h4>
+                                    <table class="table">
+                                        <thead>
+                                          <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Id Repositorio</th>
+                                            <th scope="col">Nombre Repositorio</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody id="cuerpoTabla">
+                                          
+            
+            
+                                        </tbody>
+                                      </table>
+                                </pre>
+                </div>
+                -->
+            </div>
+        </div>
+    </div>
+    <script>
+        ///////////////////////////////PEOPLE/////////////////////////////
+        var datosPeople = {};
+        var datosPeopleList = [];
+        function getStarWarsPeople() {
+            var peticion = new XMLHttpRequest();
+            peticion.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    datosPeople = JSON.parse(this.responseText);
+                    datosPeopleList = datosPeople.results;
+                    var cardPeople = document.getElementById("cardItem");
+                    var auxCardPeople = "";
+                    datosPeopleList.forEach(function (datosPeopleList, index) {
+                        var aux = datosPeopleList.films;
+                        auxCardPeople += '<div class="card"  style="width: 18rem; "><img class="card-img-top" src=' + "starwarslogoDER.jpg" + ' alt="Card image cap"><div class="card-body"> <h5 class="card-title">' + datosPeopleList.name + '</h5></div> <ul class="list-group list-group-flush"> <li class="list-group-item">Altura: ' + datosPeopleList.height + '</li> <li class="list-group-item">Peso: ' + datosPeopleList.mass + '</li><li class="list-group-item">Años: ' + datosPeopleList.birth_year + '</li><li class="list-group-item"><a onclick="" href="#">Peliculas</a></li></lu></div>';
+                    }
+                    )
+                    cardPeople.innerHTML = auxCardPeople;
+                }
+            }
+            peticion.open('GET', 'https://swapi.co/api/people/', true);
+            peticion.send();
+        }
+        /////////////////////////////////PLANET/////////////////////////////////////////
+        var datosPlanets = {};
+        var datosPlanetsList = [];
+        function getStarWarsPlanets() {
+            var peticion = new XMLHttpRequest();
+            peticion.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    datosPlanets = JSON.parse(this.responseText);
+                    datosPlanetsList = datosPlanets.results;
+                    var cardPlanets = document.getElementById("cardItem");
+                    var auxCardPlanets = "";
+                    datosPlanetsList.forEach(function (datosPlanetsList, index) {
+                        auxCardPlanets += '<img class="card-img-top" src=' + "starwarslogoDER.jpg" + ' alt="Card image cap"><div class="card-body"> <h5 class="card-title">' + datosPlanetsList.name + '</h5></div> <ul class="list-group list-group-flush"> <li class="list-group-item">Diametro: ' + datosPlanetsList.diameter + '</li> <li class="list-group-item">Clima: ' + datosPlanetsList.climate + '</li><li class="list-group-item">Población: ' + datosPlanetsList.population + '</li><li class="list-group-item"><a onclick="" href="#">Peliculas</a></li></lu>';
+                    }
+                    )
+                    cardPlanets.innerHTML = auxCardPlanets;
+                }
+            }
+            peticion.open('GET', 'https://swapi.co/api/planets/', true);
+            peticion.send();
+        }
+        /////////////////////////////////FILMS/////////////////////////////////////////
+        var datosFilms = {};
+        var datosFilmsList = [];
+        function getStarWarsFilms() {
+            var peticion = new XMLHttpRequest();
+            peticion.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    datosFilms = JSON.parse(this.responseText);
+                    datosFilmsList = datosFilms.results;
+                    var cardFilms = document.getElementById("cardItem");
+                    var auxCardFilms = "";
+                    datosFilmsList.forEach(function (datosFilmsList, index) {
+                        auxCardFilms += '<img class="card-img-top" src=' + "starwarslogoDER.jpg" + ' alt="Card image cap"><div class="card-body"> <h5 class="card-title">' + datosFilmsList.title + '</h5><p class="card-text">' + datosFilmsList.opening_crawl + '</p> </div> <ul class="list-group list-group-flush"> <li class="list-group-item">Director: ' + datosFilmsList.director + '</li> <li class="list-group-item">Productor: ' + datosFilmsList.producer + '</li><li class="list-group-item"><a onclick="" href="#">Personajes</a></li></lu>';
+                    }
+                    )
+                    cardFilms.innerHTML = auxCardFilms;
+                }
+            }
+            peticion.open('GET', 'https://swapi.co/api/films/', true);
+            peticion.send();
+        }
+        /////////////////////////////////SPECIES/////////////////////////////////////////
+        var datosSpecies = {};
+        var datosSpeciesList = [];
+        function getStarWarsSpecies() {
+            var peticion = new XMLHttpRequest();
+            peticion.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    datosSpecies = JSON.parse(this.responseText);
+                    datosSpeciesList = datosSpecies.results;
+                    var cardSpecies = document.getElementById("cardItem");
+                    var auxCardSpecies = "";
+                    datosSpeciesList.forEach(function (datosSpeciesList, index) {
+                        auxCardSpecies += '<img class="card-img-top" src=' + "starwarslogoDER.jpg" + ' alt="Card image cap"><div class="card-body"> <h5 class="card-title">' + datosSpeciesList.name + '</h5></div> <ul class="list-group list-group-flush"> <li class="list-group-item">Clasificacion: ' + datosSpeciesList.classification + '</li> <li class="list-group-item">Denominación: ' + datosSpeciesList.designation + '</li><li class="list-group-item">Promedio de vida : ' + datosSpeciesList.average_lifespan + '</li><li class="list-group-item"><a onclick="" href="#">Peliculas</a></li></lu>';
+                    }
+                    )
+                    cardSpecies.innerHTML = auxCardSpecies;
+                }
+            }
+            peticion.open('GET', 'https://swapi.co/api/species/', true);
+            peticion.send();
+        }
+        /////////////////////////////////vehicles/////////////////////////////////////////
+        var datosVehicles = {};
+        var datosVehiclesList = [];
+        function getStarWarsVehicles() {
+            var peticion = new XMLHttpRequest();
+            peticion.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    datosVehicles = JSON.parse(this.responseText);
+                    datosVehiclesList = datosVehicles.results;
+                    var cardVehicles = document.getElementById("cardItem");
+                    var auxCardVehicles = "";
+                    datosVehiclesList.forEach(function (datosVehiclesList, index) {
+                        auxCardVehicles += '<img class="card-img-top" src=' + "starwarslogoDER.jpg" + ' alt="Card image cap"><div class="card-body"> <h5 class="card-title">' + datosVehiclesList.name + '</h5></div> <ul class="list-group list-group-flush"> <li class="list-group-item">Modelo: ' + datosVehiclesList.model + '</li> <li class="list-group-item">Fabricante: ' + datosVehiclesList.manufacturer + '</li><li class="list-group-item">Clase : ' + datosVehiclesList.vehicle_class + '</li><li class="list-group-item"><a onclick="" href="#">Peliculas</a></li></lu>';
+                    }
+                    )
+                    cardVehicles.innerHTML = auxCardVehicles;
+                }
+            }
+            peticion.open('GET', 'https://swapi.co/api/vehicles/', true);
+            peticion.send();
+        }
+        /////////////////////////////////Starships/////////////////////////////////////////
+        var datosStarships = {};
+        var datosStarshipsList = [];
+        function getStarWarsStarships() {
+            var peticion = new XMLHttpRequest();
+            peticion.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    datosStarships = JSON.parse(this.responseText);
+                    datosStarshipsList = datosStarships.results;
+                    var cardStarships = document.getElementById("cardItem");
+                    var auxCardStarships = "";
+                    datosStarshipsList.forEach(function (datosStarshipsList, index) {
+                        auxCardStarships += '<img class="card-img-top" src=' + "starwarslogoDER.jpg" + ' alt="Card image cap"><div class="card-body"> <h5 class="card-title">' + datosStarshipsList.name + '</h5></div> <ul class="list-group list-group-flush"> <li class="list-group-item">Modelo: ' + datosStarshipsList.model + '</li> <li class="list-group-item">Fabricante: ' + datosStarshipsList.manufacturer + '</li><li class="list-group-item">Capacidad pasajeros : ' + datosStarshipsList.cargo_capacity + '</li><li class="list-group-item"><a onclick="" href="#">Peliculas</a></li></lu>';
+                    }
+                    )
+                    cardStarships.innerHTML = auxCardStarships;
+                }
+            }
+            peticion.open('GET', 'https://swapi.co/api/starships/', true);
+            peticion.send();
+        }
+    </script>
+</body>
+
+</html>

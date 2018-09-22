@@ -59,6 +59,7 @@
             var peticion = new XMLHttpRequest();
             peticion.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
+                    console.log("aux");
                     datosPerfil = JSON.parse(this.responseText);
                     document.getElementById('nombre').innerHTML = datosPerfil.name;
                     document.getElementById('location').innerHTML = datosPerfil.location;
